@@ -6,5 +6,5 @@
 
 TEST_CASE("Check the range and total number of readings lying in each range") {
   int chargingRange[] = {4,5};
-  REQUIRE(strcmp(getRangeAndReadings(chargingRange),"4-5, 2")==0);         
+  REQUIRE(strcmp((getRangeAndReadings(chargingRange)),"4-5, 2"));         
 }
