@@ -1,0 +1,1 @@
+string getRangeAndReadings(int chargingRange);
