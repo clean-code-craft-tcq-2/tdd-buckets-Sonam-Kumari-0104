@@ -17,7 +17,7 @@ size_t numberOfSamples(int* chargingISamples){
 }
 
 int getMinValue(int* Samples, int noOfSamples){
-    int min = Samples[0];
+    int min = Samples[noOfSamples-1];
     for(int i=1; i<noOfSamples; i++)
     {
         if (min > Samples[i]){
