@@ -4,4 +4,6 @@
 #include "typewise-alert.h"
 
 TEST_CASE("Check the range and total number of readings lying in each range") {
+  int chargingRange[] = {4,5};
+  REQUIRE(getRangeAndReadings(chargingRange)=="4-5, 2");         
 }
