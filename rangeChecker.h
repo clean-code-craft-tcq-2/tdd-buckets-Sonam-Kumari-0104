@@ -1,1 +1,1 @@
-const char* getRangeAndReadings(int chargingRange);
+const char* getRangeAndReadings(int* chargingRange);
