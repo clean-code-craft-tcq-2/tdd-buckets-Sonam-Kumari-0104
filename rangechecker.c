@@ -5,7 +5,7 @@ const char* getRangeAndReadings(int* chargingISamples){
     size_t noOfSamples = numberOfSamples(chargingISamples);
     int minValue = getMinValue(chargingISamples, noOfSamples);
     int maxValue = getMaxValue(chargingISamples, noOfSamples);
-    char * chargingRangeAndReadings[15];
+    char chargingRangeAndReadings[15];
     sprintf(chargingRangeAndReadings, "%d-%d, %d", minValue, maxValue, noOfSamples);
     return "chargingRangeAndReadings";
   }
