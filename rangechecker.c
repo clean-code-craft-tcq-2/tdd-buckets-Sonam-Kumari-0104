@@ -1,39 +1,46 @@
 #include <stdio.h>
 #include "rangeChecker.h"
 
-const char* getRangeAndReadings(int* chargingISamples){
-    size_t noOfSamples = numberOfSamples(chargingISamples);
-    int minValue = getMinValue(chargingISamples, noOfSamples);
-    int maxValue = getMaxValue(chargingISamples, noOfSamples);
-    char chargingRangeAndReadings[15];
-    sprintf(chargingRangeAndReadings, "%d-%d, %d", minValue, maxValue, noOfSamples);
-    printf("%s", chargingRangeAndReadings);
-    return "chargingRangeAndReadings";
-  }
-
-size_t numberOfSamples(int* chargingISamples){
-    size_t noOfISamples = sizeof(chargingISamples)/sizeof(chargingISamples[0]);
-    return noOfISamples;
-}
-
-int getMinValue(int* Samples, int noOfSamples){
-    int min = Samples[0];
-    for(int i=1; i<noOfSamples; i++)
+int *sort(int array, int size)
+{
+    for (int i = 0; i < size - 1; i++)
     {
-        if (min > Samples[i]){
-            min = Samples[i];
+        for (int j = 0; j < size - i - 1; j++)
+        {
+            if (array[j] > array[j + 1])
+            {
+                int temp = array[j];
+                array[j] = array[j + 1];
+                array[j + 1] = temp;
+            }
         }
     }
-    return min;
+    return array;
 }
 
-int getMaxValue(int* Samples, int noOfSamples){
-    int max = Samples[0];
-    for(int i=1; i<noOfSamples; i++)
+ReadingRangeList getReadingRangeList(int *readingsArray)
+{
+    size_t size = sizeof(readingsArray)/sizeof(readingsArray[0]);
+    int(*sortedArray) = sort(readingsArray, size);
+    ReadingRange *readingRanges = (ReadingRange *)malloc(size * sizeof(ReadingRange));
+    int start = sortedArray[0], end = sortedArray[0], count = 0, rangeIndex = 0;
+    for (int i = 0; i < size; i++)
     {
-        if (max < Samples[i]){
-            max = Samples[i];
+        if (sortedArray[i] == start || sortedArray[i] == end + 1)
+        {
+            count++;
+            end = sortedArray[i];
+        }
+        else
+        {
+            readingRanges[rangeIndex] = {start, end, count};
+            rangeIndex++;
+            count = 1;
+            start = sortedArray[i];
+            end = start;
         }
     }
-    return max;
+    readingRanges[rangeIndex] = {start, end, count};
+    ReadingRangeList readingRangeList = {readingRanges, rangeIndex + 1};
+    return readingRangeList;
 }
