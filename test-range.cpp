@@ -6,7 +6,7 @@
 
 TEST_CASE("Check the range and total number of readings lying in each range") {
   int arr[7] = {1, 2, 4, 3, 12, 11};
-  ReadingRange expectedReadingRange[2] = {{1, 2,3, 4}, {11, 12}};
+  ReadingRange expectedReadingRange[2] = {{1, 4, 4}, {11, 12, 2}};
   ReadingRangeList expectedReadingRangeList = {expectedReadingRange, 2};
   ReadingRangeList actualReadingRangeList = getReadingRangeList(arr);
   ReadingRange *actualReadingRange = actualReadingRangeList.readingRanges;
