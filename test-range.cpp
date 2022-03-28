@@ -5,9 +5,15 @@
 #include <string.h>
 
 TEST_CASE("Check the range and total number of readings lying in each range") {
-  int chargingRange[] = {4,5};
-  REQUIRE(strcmp((getRangeAndReadings(chargingRange)),"4-5, 2"));  
-  
-  int chargingRange2[] = {11,10,12};
-  REQUIRE(strcmp((getRangeAndReadings(chargingRange2)),"10-12, 3")); 
+  int arr[7] = {1, 2, 4, 3, 12, 11};
+  ReadingRange expectedReadingRange[2] = {{1, 2,3, 4}, {11, 12}};
+  ReadingRangeList expectedReadingRangeList = {expectedReadingRange, 2};
+  ReadingRangeList actualReadingRangeList = getReadingRangeList(arr);
+  ReadingRange *actualReadingRange = actualReadingRangeList.readingRanges;
+  for (int i = 0; i < expectedReadingRangeList.totalReadingRanges; i++)
+  {
+      REQUIRE(actualReadingRange[i].rangeStart == expectedReadingRange[i].rangeStart);
+      REQUIRE(actualReadingRange[i].rangeEnd == expectedReadingRange[i].rangeEnd);
+      REQUIRE(actualReadingRange[i].numberOfReadings == expectedReadingRange[i].numberOfReadings);
+  }
 }
