@@ -1,7 +1,8 @@
 #include <stdio.h>
+#include <cstdlib>
 #include "rangeChecker.h"
 
-int *sort(int array, int size)
+int *sort(int *array, int size)
 {
     for (int i = 0; i < size - 1; i++)
     {
