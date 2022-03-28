@@ -19,9 +19,8 @@ int *sort(int *array, int size)
     return array;
 }
 
-ReadingRangeList getReadingRangeList(int *readingsArray)
+ReadingRangeList getReadingRangeList(int *readingsArray, int size)
 {
-    size_t size = sizeof(readingsArray)/sizeof(readingsArray[0]);
     int *sortedArray = sort(readingsArray, size);
     ReadingRange *readingRanges = (ReadingRange *)malloc(size * sizeof(ReadingRange));
     int start = sortedArray[0], end = sortedArray[0], count = 0, rangeIndex = 0;
