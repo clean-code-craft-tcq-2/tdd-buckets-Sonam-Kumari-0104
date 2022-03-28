@@ -1,4 +1,13 @@
-const char* getRangeAndReadings(int* chargingISamples);
-size_t numberOfSamples(int* chargingISamples);
-int getMinValue(int* Samples, int noOfSamples);
-int getMaxValue(int* Samples, int noOfSamples);
+typedef struct ReadingRange {
+    int rangeStart;
+    int rangeEnd;
+    int numberOfReadings;
+} ReadingRange;
+
+typedef struct ReadingRangeList {
+    ReadingRange *readingRanges;
+    int totalReadingRanges;
+} ReadingRangeList;
+
+ReadingRangeList getReadingRangeList(int *readingsArray);
+int *sort(int array, int size);
