@@ -5,8 +5,8 @@
 #include <string.h>
 
 TEST_CASE("Check the range and total number of readings lying in each range") {
-  int arr[5] = {1, 3, 2, 12, 11};
-  ReadingRange expectedReadingRange[2] = {{1, 3, 3}, {11, 12, 2}};
+  int arr[4] = {1, 2, 12, 11};
+  ReadingRange expectedReadingRange[2] = {{1, 2, 2}, {11, 12, 2}};
   ReadingRangeList expectedReadingRangeList = {expectedReadingRange, 2};
   ReadingRangeList actualReadingRangeList = getReadingRangeList(arr);
   ReadingRange *actualReadingRange = actualReadingRangeList.readingRanges;
